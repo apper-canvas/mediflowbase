@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useSelector } from "react-redux";
 import SearchBar from "@/components/molecules/SearchBar";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
+import { AuthContext } from "../../App";
 import { motion } from "framer-motion";
 
 const Header = ({ onMobileMenuToggle, searchQuery, onSearchChange }) => {
@@ -48,14 +50,17 @@ const Header = ({ onMobileMenuToggle, searchQuery, onSearchChange }) => {
             </Button>
           </div>
           
-          <div className="flex items-center space-x-3">
+<div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
               <ApperIcon name="User" size={18} className="text-white" />
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">Dr. Sarah Johnson</p>
-              <p className="text-xs text-gray-500">Emergency Department</p>
+              <p className="text-sm font-medium text-gray-900">{useSelector(state => state.user.user?.firstName || 'User')} {useSelector(state => state.user.user?.lastName || '')}</p>
+              <p className="text-xs text-gray-500">Hospital Staff</p>
             </div>
+            <Button variant="ghost" size="sm" onClick={useContext(AuthContext).logout}>
+              <ApperIcon name="LogOut" size={16} />
+            </Button>
           </div>
         </div>
       </div>
