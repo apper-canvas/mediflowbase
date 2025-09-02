@@ -332,5 +332,3 @@ class PatientService {
 }
 
 export default new PatientService();
-
-export default new PatientService();

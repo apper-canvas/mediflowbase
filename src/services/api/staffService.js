@@ -314,5 +314,3 @@ class StaffService {
 }
 
 export default new StaffService();
-
-export default new StaffService();

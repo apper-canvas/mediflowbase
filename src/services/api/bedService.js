@@ -381,4 +381,3 @@ class BedService {
 }
 
 export default new BedService();
-export default new BedService();
